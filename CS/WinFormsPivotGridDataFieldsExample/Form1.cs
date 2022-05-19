@@ -25,22 +25,21 @@ namespace WinFormsPivotGridDataFieldsExample
                 Area = PivotArea.RowArea,
                 AreaIndex = 0,
                 Caption = "Category Name",
-                FieldName = "CategoryName"
+                DataBinding = new DataSourceColumnBinding("CategoryName")
             };
-            PivotGridField fieldProductName = new PivotGridField()
-            {
+            PivotGridField fieldProductName = new PivotGridField() {
                 Area = PivotArea.RowArea,
                 AreaIndex = 1,
                 Caption = "Product Name",
-                FieldName = "ProductName"
+                DataBinding = new DataSourceColumnBinding("ProductName")
             };
             PivotGridField fieldExtendedPrice = new PivotGridField()
             {
                 Area = PivotArea.DataArea,
                 AreaIndex = 0,
                 Caption = "Extended Price",
-                FieldName = "Extended Price",
-            };
+                DataBinding = new DataSourceColumnBinding("Extended Price")
+    };
             // Specify the field format.
             fieldExtendedPrice.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             fieldExtendedPrice.CellFormat.FormatString = "c2";
@@ -50,27 +49,21 @@ namespace WinFormsPivotGridDataFieldsExample
                 Area = PivotArea.ColumnArea,
                 AreaIndex = 0,
                 Caption = "Year",
-                GroupInterval = PivotGroupInterval.DateYear,
-                FieldName = "OrderDate",
+                DataBinding = new DataSourceColumnBinding("OrderDate", PivotGroupInterval.DateYear)
             };
             PivotGridField fieldOrderDate2 = new PivotGridField()
             {
                 Area = PivotArea.ColumnArea,
                 AreaIndex = 1,
                 Caption = "Quarter",
-                GroupInterval = PivotGroupInterval.DateQuarter,
-                FieldName = "OrderDate"
+                DataBinding = new DataSourceColumnBinding("OrderDate", PivotGroupInterval.DateQuarter)
             };
             PivotGridField fieldCountry = new PivotGridField()
             {
                 AreaIndex = 0,
                 Caption = "Country",
-                FieldName = "Country"
+                DataBinding = new DataSourceColumnBinding("Country")
             };
-            // Create a field's filter.
-            fieldCountry.FilterValues.Clear();
-            fieldCountry.FilterValues.FilterType = PivotFilterType.Included;
-            fieldCountry.FilterValues.Add("USA");
             // Add fields to the pivot grid.
             pivotGridControl1.Fields.AddRange(new PivotGridField[] {
             fieldCategoryName,

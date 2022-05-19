@@ -23,19 +23,19 @@ Namespace WinFormsPivotGridDataFieldsExample
 				.Area = PivotArea.RowArea,
 				.AreaIndex = 0,
 				.Caption = "Category Name",
-				.FieldName = "CategoryName"
+				.DataBinding = New DataSourceColumnBinding("CategoryName")
 			}
 			Dim fieldProductName As New PivotGridField() With {
 				.Area = PivotArea.RowArea,
 				.AreaIndex = 1,
 				.Caption = "Product Name",
-				.FieldName = "ProductName"
+				.DataBinding = New DataSourceColumnBinding("ProductName")
 			}
 			Dim fieldExtendedPrice As New PivotGridField() With {
 				.Area = PivotArea.DataArea,
 				.AreaIndex = 0,
 				.Caption = "Extended Price",
-				.FieldName = "Extended Price"
+				.DataBinding = New DataSourceColumnBinding("Extended Price")
 			}
 			' Specify the field format.
 			fieldExtendedPrice.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -45,25 +45,19 @@ Namespace WinFormsPivotGridDataFieldsExample
 				.Area = PivotArea.ColumnArea,
 				.AreaIndex = 0,
 				.Caption = "Year",
-				.GroupInterval = PivotGroupInterval.DateYear,
-				.FieldName = "OrderDate"
+				.DataBinding = New DataSourceColumnBinding("OrderDate", PivotGroupInterval.DateYear)
 			}
 			Dim fieldOrderDate2 As New PivotGridField() With {
 				.Area = PivotArea.ColumnArea,
 				.AreaIndex = 1,
 				.Caption = "Quarter",
-				.GroupInterval = PivotGroupInterval.DateQuarter,
-				.FieldName = "OrderDate"
+				.DataBinding = New DataSourceColumnBinding("OrderDate", PivotGroupInterval.DateQuarter)
 			}
 			Dim fieldCountry As New PivotGridField() With {
 				.AreaIndex = 0,
 				.Caption = "Country",
-				.FieldName = "Country"
+				.DataBinding = New DataSourceColumnBinding("Country")
 			}
-			' Create a field's filter.
-			fieldCountry.FilterValues.Clear()
-			fieldCountry.FilterValues.FilterType = PivotFilterType.Included
-			fieldCountry.FilterValues.Add("USA")
 			' Add fields to the pivot grid.
 			pivotGridControl1.Fields.AddRange(New PivotGridField() { fieldCategoryName, fieldProductName, fieldOrderDate1, fieldOrderDate2, fieldExtendedPrice, fieldCountry})
 		End Sub
